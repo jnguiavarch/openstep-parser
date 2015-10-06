@@ -159,13 +159,13 @@ class OpenStepDecoder:
     def _ignore_comment(self, str, index):
         # moves the index, to the next character after the close of the comment
 
-        if index + 1 >= len(str) or (str[index] != '/' and str[index + 1] != '*'):
+        if index + 1 >= len(str) or str[index] != '/' or str[index + 1] != '*':
             return index
 
         # move after the first character in the comment
         index += 2
 
-        while str[index] != '*' and str[index + 1] != '/':
+        while str[index] != '*' or str[index + 1] != '/':
             index += 1
 
         # move after the first character after the comment
